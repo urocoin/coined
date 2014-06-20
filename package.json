@@ -1,7 +1,7 @@
 {
   "name": "coined-uro",
   "description": "Highlevel wrapper around BCoin for Uro",
-  "author": "Christopher Jeffrey and Bohan Huang",
+  "author": "Christopher Jeffrey",
   "version": "0.0.5",
   "main": "./lib/coined-uro.js",
   "bin": "./bin/coined-uro",
