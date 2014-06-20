@@ -1,33 +1,35 @@
-# coined
+# coined-uro
 
-**coined** is a high-level wrapper around [BCoin][bcoin], making it easy to
+**coined-uro** is a high-level wrapper around [BCoin] for Uro [bcoin-uro], making it easy to
 send transactions and deal with wallets/accounts. Some of the original code was
-based on Fedor Indutny's [BThread][bthread].
+based on Fedor Indutny's [BThread][bthread], the rest was from Christopher Jeffery.
 
 ## Install
 
 ``` bash
-$ npm install coined
+$ npm install coined-uro
 ```
 
 ## Usage
 
-The primary feature of Coined is a wallet similar to the way bitcoin-qt handles
-wallets (a collection of accounts, stored by label).
+Coined for Uro is a fork of Coined that focuses 
+on creating a very light, low dependency web based brain wallet that signs transactions inside 
+the browser in-memory so that the private keys are never stored on disk anywhere.
+Part of the library will be used on the client side why the server side will provide a method of 
+broadcasting transactions and providing past transaction and balance data
 
 ```js
-var coined = require('coined');
+var coined = require('coined-uro');
 var utils = coined.utils;
 var bcoin = coined.bcoin;
 var bn = coined.bn;
 
 var coin = coined({
-  // DB type, can be `tiny` or `leveldown`.
   db: {
-    type: 'tiny',
-    path: process.env.HOME + '/.my-app/db'
+    type: 'level',
+    path: './bcoin-wallet'
   },
-  wallet: process.env.HOME + '/.my-app/wallet.json'
+  wallet: './bcoin-wallet.json'
 });
 
 // Add a key+pair/account to our wallet, under the label "main".
@@ -37,7 +39,7 @@ coin.addAccount({ label: 'main' });
 coin.on('balance', function() {
   if (coin._sentIt) return;
 
-  var address = '1Lzcrow4haAm6j4vyKhMeFQdHcaE1VbjTc';
+  var address = 'UUZDpVu9BMmih3AUd54dVJfeVmKtyZiPzB';
   var amount = 100000; // satoshis!
 
   // `coin.balance()` will tell you the *entire* cumulative
