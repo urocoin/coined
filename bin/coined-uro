@@ -247,7 +247,7 @@ function parseArg(argv) {
  */
 
 if (!module.parent) {
-  process.title = 'coined';
+  process.title = 'coined-uro';
   main(argv, function(err) {
     if (err) throw err;
     return process.exit(0);
